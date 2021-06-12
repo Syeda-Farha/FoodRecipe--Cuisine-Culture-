@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QRCode</title>
+<style>
+ body
+{
+    background-color: ;
+}
+#h1
+{
+    margin-left:30px;
+    margin-top:30px;
+    color: #9eec0d;
+}
+
+#Div
+{
+    background-color: rgb(255, 0, 200);
+    width: 520px;
+}
+
+#ip
+{
+    width: 250px;
+    height: 25px;
+    font-size: large;
+    font-weight: bolder;
+    margin-top: 15px;
+}
+
+#btn
+{
+    margin-bottom: 15px;
+    margin-left: 300px;
+}
+#div3
+{
+    text-align: center;
+    padding: 10px;
+}
+
+#div2
+{
+    background-color: red;
+    margin-left: 30px;
+    margin-top: 100px;
+    width: 290px;
+}
+
+
+#QR
+{
+    background-color: rgb(255, 255, 255);
+    margin-top: 100px;
+    width: 290px;
+    height: 250px;
+}
+</style>
+
+</head>
+<body>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v10.0" nonce="LddVQkLB">
+
+</script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v10.0" nonce="4wwZyUEu"></script>
+
+<div id="Div">
+        <form action="/userinput" method="post">
+            {% csrf_token %}
+            <h1 id="h1">Enter your Data <input type="text" name="input" id="ip"></h1>
+            <input type="submit" value="Generate QR Code" id="btn">
+        </form>
+    </div>
+<div id="div2">
+        <h1 id="div3">Qr Code is: </h1>
+    </div>
+
+
+    <div id="QR">
+        {% if input %}
+            <img src="{% static 'MainApp/images/test.png' %}" alt="No Image">
+        {% else %}
+            <h1>Qr Code</h1>
+        {% endif %}
+    </div>
+<div class="fb-comments" data-href="http://127.0.0.1:8000/home/" data-width="" data-numposts="5"></div>
+<div class="fb-like" data-href="http://127.0.0.1:8000/about/" data-width="" data-layout="button_count" data-action="like" data-size="large" data-share="true"></div>
+</body>
+</html>
